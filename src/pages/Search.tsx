@@ -8,12 +8,18 @@ function Search() {
 
   const [proArr, setproArr] = useState<iProduct[]>([])
   const [params, setParams] = useSearchParams()
+  const [q, setQ] = useState<string | null>(null)
   useEffect(() => {
     const q = params.get('q')
+    setQ(q)
     if (q) {
         searchProduct(q).then(res => {
             const dt = res.data
-            setproArr(dt.data)
+            if (dt && dt.data) {
+                setproArr(dt.data)
+            }
+        }).catch(err => {
+            // console.log(err)
         })
     }
   }, [])
@@ -21,13 +27,17 @@ function Search() {
 
   return (
     <>
-      <h2>Search</h2>
+      <h2 dangerouslySetInnerHTML={{ __html: `Search - ${q}` }} />
       <div className='row'>
-        {proArr.map((item, index) =>
-          <div className='col-xs-12 col-sm-6 col-md-4 col-lg-3' key={index}>
-            <ProductItem item={item}/>
-          </div>
-        )}
+          { proArr.map((item, index) =>
+            <div className='col-xs-12 col-sm-6 col-md-4 col-lg-3' key={index}>
+              <ProductItem item={item}/>
+            </div>
+          )}
+
+        {
+          proArr.length === 0 && <div className='col-12'>No product found</div>
+        }
       </div>
     </>
   )

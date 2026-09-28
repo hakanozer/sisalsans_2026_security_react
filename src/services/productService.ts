@@ -20,7 +20,7 @@ export const searchProduct = (q:string) => {
         page: 1,
         per_page: 10
     }
-    return apiConfig.get<iAllProduct>('products/search', {params: sendObj})
+    return apiConfig.get<iAllProduct | any>('products/search', {params: sendObj})
 }
 
 // Body -> apiConfig.post<iUser>('auth/login', sendObj)
