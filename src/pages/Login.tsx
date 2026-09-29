@@ -37,7 +37,7 @@ function Login() {
       })
       .catch(err => {
         // servis hatalı ise
-        toast.error('Incorrect email or password')
+        toast.error(err.message)
       })
     }
 

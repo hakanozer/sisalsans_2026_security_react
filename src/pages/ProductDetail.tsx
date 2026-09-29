@@ -77,6 +77,10 @@ function ProductDetail() {
                 </div>
 
                 <p className="flex-grow-1">{item.data.description}</p>
+                <div className="ratio ratio-16x9">
+                    <iframe height="315" src="https://www.youtube.com/embed/RAxDy10bvnM?si=S7eYW6UlFwRto15q" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                  </div>
+                
 
                 <i onClick={likeAddRemove} className={ likeIcon ? 'bi bi-suit-heart-fill fs-3 text-danger' : 'bi bi-suit-heart fs-3 text-danger'} role='button'></i>
 

@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { searchProduct } from '../services/productService'
 import { iProduct } from '../models/iAllProduct'
 import ProductItem from '../components/ProductItem'
+import { toast } from 'react-toastify'
 
 function Search() {
 
@@ -20,6 +21,11 @@ function Search() {
             }
         }).catch(err => {
             // console.log(err)
+            toast.error(err.message)
+            localStorage.clear()
+            setTimeout(() => {
+              window.location.href = '/'
+            }, 3000);
         })
     }
   }, [])
